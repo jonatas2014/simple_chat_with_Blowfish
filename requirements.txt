@@ -1,0 +1,4 @@
+cffi==1.15.0
+pycparser==2.21
+pycrypto==2.6.1
+six==1.16.0
