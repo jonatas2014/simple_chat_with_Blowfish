@@ -2,7 +2,6 @@ from Crypto.Cipher import Blowfish
 
 from constants import DEFAULT_KEY, ENCONDING_FORMAT
 
-
 class BlowfishCriptography:
 
     def __init__(self, key):
@@ -22,7 +21,6 @@ class BlowfishCriptography:
         decrypted_text = self.cipher.decrypt(cipher_text).decode(ENCONDING_FORMAT)
         decrypted_text = decrypted_text.strip()
         return decrypted_text
-
 
 if __name__ == '__main__':
     
