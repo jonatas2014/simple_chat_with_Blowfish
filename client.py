@@ -25,15 +25,16 @@ if __name__ == "__main__":
         server_socket.connect((args.host, args.port))
 
         cipher = BlowfishCriptography(key=args.key if args.key is not None else DEFAULT_KEY)
+        
+        while True:
+            read_sockets, _, _ = select.select([server_socket, sys.stdin], [], [])
 
-        read_sockets, _, _ = select.select([server_socket, sys.stdin], [], [])
-
-        for socket in read_sockets:
-            if socket == sys.stdin:
-                message = sys.stdin.readline().strip()
-                encrypted_message = cipher.encrypt(message)
-                server_socket.send(encrypted_message)
-            else:
-                encrypted_message = socket.recv(2048)
-                message = cipher.decrypt(encrypted_message)
-                print(message)
+            for socket in read_sockets:
+                if socket == sys.stdin:
+                    message = sys.stdin.readline().strip()
+                    encrypted_message = cipher.encrypt(message)
+                    server_socket.send(encrypted_message)
+                else:
+                    encrypted_message = socket.recv(2048)
+                    message = cipher.decrypt(encrypted_message)
+                    print(message)
