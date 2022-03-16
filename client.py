@@ -21,7 +21,8 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
-        sock.connect((args.host, args.port))
+        
+        server_socket.connect((args.host, args.port))
 
         cipher = BlowfishCriptography(key=args.key if args.key is not None else DEFAULT_KEY)
 
