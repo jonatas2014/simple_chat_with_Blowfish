@@ -1,9 +1,8 @@
-import os
-
 from Crypto.Cipher import Blowfish
 
-from constants import DEFAULT_KEY, ENCONDING_FORMAT
+DEFAULT_KEY = b"You are worthless but I like you"
 
+ENCONDING_FORMAT = 'UTF-8'
 
 class BlowfishCriptography:
     def __init__(self, key):
