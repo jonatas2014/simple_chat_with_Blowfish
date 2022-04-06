@@ -1,7 +1,8 @@
-# simple_chat_with_Blowfish
+# simple_chat_room_with_Blowfish
 
-A simple academic task as a prerequisite for approval in a information security graduation course from a bachelor degree in Systems information
+An academic task as a prerequisite for approval in a information security graduation course from a bachelor degree in Systems information
 
-Original Sources:<br>
-  https://www.geeksforgeeks.org/simple-chat-room-using-python/<br>
-  https://github.com/SimonBirkenheuer/MQTT-Chat
+## developers
+> Gabriel San Martin: <a href=https://github.com/gasmartin>@gasmartin</a> <br>
+> Jonatas Barros: <a href=https://github.com/jonatas2014>@jonatas2014</a> <br>
+
