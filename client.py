@@ -59,6 +59,9 @@ class User(cmd.Cmd, threading.Thread):
             key = rsa.decrypt(key, self.private_key)
             self.cipher = BlowfishCriptography(key)
 
+            # Message: <client> just entered
+            pickle.dump({'code': '2', 'content': self.cipher.encrypt(f'{socket.gethostname()} just entered.')}, self.writer)
+
     def preloop(self):
         # Registering user
         pickle.dump({'code': '1', 'content': self.public_key}, self.writer)
