@@ -21,6 +21,7 @@ class CustomServer(socketserver.ThreadingTCPServer):
         return hash_
 
     def add_client(self, client):
+        print(f"cliente {client.client_address} conectado")
         self.clients.add(client)
 
     def broadcast(self, source, data):
@@ -29,6 +30,7 @@ class CustomServer(socketserver.ThreadingTCPServer):
                 client.schedule((source.name, data))
 
     def remove_client(self, client):
+        print(f"cliente {client.client_address} desconectado")
         self.clients.remove(client)
 
 
@@ -73,6 +75,7 @@ class CustomHandler(socketserver.StreamRequestHandler):
         self.buffer.put_nowait(data)
 
     def finish(self):
+        pass
         self.server.remove_client(self)
         super().finish()
 

@@ -41,8 +41,10 @@ class User(cmd.Cmd, threading.Thread):
             pass
 
     def handle_server_command(self):
-        source, obj = pickle.load(self.reader)
 
+       
+        source, obj = pickle.load(self.reader)
+    
         if obj['code'] == '2':
             message = None
             try:
@@ -53,14 +55,14 @@ class User(cmd.Cmd, threading.Thread):
             if message is None:
                 message = obj['content']
 
-            print(f'\n{source[0]}: {message}')
+            print(f'\n{source}: {message}')
         else:
             key = obj['content']
             key = rsa.decrypt(key, self.private_key)
             self.cipher = BlowfishCriptography(key)
 
             # Message: <client> just entered
-            pickle.dump({'code': '2', 'content': self.cipher.encrypt(f'{socket.gethostname()} just entered.')}, self.writer)
+            pickle.dump({'code': '2', 'content': self.cipher.encrypt(f'{(self.connection.getsockname())} just entered.')}, self.writer)
 
     def preloop(self):
         # Registering user
@@ -75,7 +77,7 @@ class User(cmd.Cmd, threading.Thread):
         return True
 
     def postloop(self):
-        message = {'code': '2', 'content': self.cipher.encrypt(f'{socket.gethostname()} just exited.')}
+        message = {'code': '2', 'content': self.cipher.encrypt(f'{self.connection.getsockname()} just exited.')}
         pickle.dump(message, self.writer)
 
 
