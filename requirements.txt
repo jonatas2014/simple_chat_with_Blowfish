@@ -1,6 +1,13 @@
+bandit==1.7.4
 cffi==1.15.0
+gitdb==4.0.9
+GitPython==3.1.27
+pbr==5.9.0
 pyasn1==0.4.8
 pycparser==2.21
 pycrypto==2.6.1
+PyYAML==6.0
 rsa==4.8
 six==1.16.0
+smmap==5.0.0
+stevedore==3.5.0
